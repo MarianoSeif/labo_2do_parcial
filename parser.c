@@ -4,6 +4,7 @@
 #include <string.h>
 #include "LinkedList.h"
 #include "vuelo.h"
+#include "piloto.h"
 
 
 int parser_flightFromText(FILE* pFile , LinkedList* pList)
@@ -26,6 +27,34 @@ int parser_flightFromText(FILE* pFile , LinkedList* pList)
 		if(datos==8){
 			pVuelo = vuelo_newParametros(idVuelo, idAvion, idPiloto, fecha, destino, cantPasajeros, horaDespegue, horaLlegada);
 			ll_add(pList, pVuelo);
+			retorno=1;
+		}
+	}
+
+    return retorno;
+}
+
+
+int parser_pilotosFromText(FILE* pFile , LinkedList* pList)
+{
+	int datos, retorno;
+	char id[3], nombre[128];
+	ePiloto* pPiloto;
+
+	retorno=-1;
+
+	//Leo el encabezado
+
+	//fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", idVuelo, idAvion, idPiloto, fecha, destino, cantPasajeros, horaDespegue, horaLlegada);
+
+	while(!feof(pFile)){
+		if(feof(pFile)){
+			break;
+		}
+		datos = fscanf(pFile, "%[^,],%[^\n]\n", id, nombre);
+		if(datos==2){
+			pPiloto = piloto_newParametros(id, nombre);
+			ll_add(pList, pPiloto);
 			retorno=1;
 		}
 	}

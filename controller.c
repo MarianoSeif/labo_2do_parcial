@@ -30,6 +30,26 @@ int controller_loadFlightFile(char* path, LinkedList* plistFlights)
 	return retorno;
 }
 
+int controller_loadPilotosFromFile(char* path, LinkedList* plistFlights)
+{
+	int retorno = -1;
+	FILE* pFile;
+
+	pFile=fopen(path, "r");
+
+	if(pFile!=NULL){
+		if(parser_pilotosFromText(pFile, plistFlights)==-1){
+			printf("\nError. El archivo está vacio");
+		}
+
+		fclose(pFile);
+		retorno = 1;
+	}
+
+	return retorno;
+}
+
+
 int controller_ListFlights(LinkedList* pListFlights, LinkedList* pListPilotos)
 {
     int i, len, retorno;

@@ -17,3 +17,4 @@ int controller_filtrarVuelosAlexLifeson(LinkedList* pListFlights, LinkedList* Pi
 int controller_ordenar(LinkedList* pListFlights, LinkedList* PilotsList);
 int controller_Seif_filtrarVuelosPorNombre(LinkedList* pListFlights, LinkedList* PilotsList);
 int controller_Seif_filtrarVuelosPorDestino(LinkedList* pListFlights, LinkedList* PilotsList);
+int controller_loadPilotosFromFile(char* path, LinkedList* plistFlights);

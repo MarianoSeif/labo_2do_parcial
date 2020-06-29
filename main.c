@@ -20,7 +20,9 @@ int main()
 	LinkedList* FlightsList = ll_newLinkedList();
 	LinkedList* PilotsList = ll_newLinkedList();
 
-	piloto_hardcodearPilotos(PilotsList);
+	//piloto_hardcodearPilotos(PilotsList);
+	controller_loadPilotosFromFile("pilotos.csv",PilotsList);
+	controller_ListPilots(PilotsList);
 
 	do{
 		opcion = menuPrincipal();

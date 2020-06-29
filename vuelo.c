@@ -58,16 +58,7 @@ eVuelo* vuelo_newParametros(char* idVueloStr,char* idAvionStr,char* idPilotoStr,
 	vuelo_setCantPasajeros(pVuelo, atoi(cantPasajerosStr));
 	vuelo_setHoraDespegue(pVuelo, atoi(horaDespegueStr));
 	vuelo_setHoraLlegada(pVuelo, atoi(horaLlegadaStr));
-	/*
-	pVuelo->idVuelo = atoi(idVueloStr);
-	pVuelo->idAvion = atoi(idAvionStr);
-	pVuelo->idPiloto = atoi(idPilotoStr);
-	strcpy(pVuelo->fecha, fechaStr);
-	strcpy(pVuelo->destino, destinoStr);
-	pVuelo->cantPasajeros = atoi(cantPasajerosStr);
-	pVuelo->horaDespegue = atoi(horaDespegueStr);
-	pVuelo->horaLlegada = atoi(horaLlegadaStr);
-*/
+
 	return pVuelo;
 }
 

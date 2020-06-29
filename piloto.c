@@ -16,6 +16,15 @@ ePiloto* piloto_new()
 	return (ePiloto*) malloc(sizeof(ePiloto));
 }
 
+ePiloto* piloto_newParametros(char* idStr,char* nombreStr)
+{
+	ePiloto* pPiloto = piloto_new();
+
+	piloto_setId(pPiloto, atoi(idStr));
+	piloto_setNombre(pPiloto, nombreStr);
+
+	return pPiloto;
+}
 
 int piloto_hardcodearPilotos(LinkedList* pListPilots)
 {
@@ -40,7 +49,7 @@ int piloto_hardcodearPilotos(LinkedList* pListPilots)
 
 int piloto_findPilotoById(LinkedList* pListPilotos, int id)
 {
-	int len, index, i, currentId;
+	int len, index, i;
 	ePiloto* pPiloto;
 	index=-1;
 
@@ -82,7 +91,7 @@ int getNombrePiloto(LinkedList* pListPilotos, int id, char* nombrePiloto)
 int getIdPilotoPorNombre(LinkedList* pListPilotos, char* nombrePiloto)
 {
 	ePiloto* pPiloto;
-	int index,i,len, id;
+	int i,len, id;
 	int retorno = -1;
 	char nombre[128];
 
