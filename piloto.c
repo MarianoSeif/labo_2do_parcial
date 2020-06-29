@@ -79,6 +79,28 @@ int getNombrePiloto(LinkedList* pListPilotos, int id, char* nombrePiloto)
 	return retorno;
 }
 
+int getIdPilotoPorNombre(LinkedList* pListPilotos, char* nombrePiloto)
+{
+	ePiloto* pPiloto;
+	int index,i,len, id;
+	int retorno = -1;
+	char nombre[128];
+
+	if(pListPilotos!=NULL){
+		len = ll_len(pListPilotos);
+		for(i=0;i<len;i++){
+			pPiloto = (ePiloto*) ll_get(pListPilotos, i);
+			piloto_getNombre(pPiloto, nombre);
+
+			if(strcmp(nombrePiloto, nombre)==0){
+				piloto_getId(pPiloto, &id);
+			}
+		}
+		retorno = id;
+	}
+
+	return retorno;
+}
 
 //SETTERS Y GETTERS
 

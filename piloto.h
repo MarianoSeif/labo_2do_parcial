@@ -22,5 +22,6 @@ int piloto_setId(ePiloto* this,int id);
 int piloto_getId(ePiloto* this,int* id);
 int piloto_setNombre(ePiloto* this,char* nombre);
 int piloto_getNombre(ePiloto* this,char* nombre);
+int getIdPilotoPorNombre(LinkedList* pListPilotos, char* nombrePiloto);
 
 #endif /* PILOTO_H_ */

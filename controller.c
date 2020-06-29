@@ -209,7 +209,7 @@ int controller_Seif_filtrarVuelosPorNombre(LinkedList* pListFlights, LinkedList*
 
 	if(pListFlights!=NULL){
 		getString("Ingrese nombre del piloto", nombrePiloto, 128);
-
+		idPiloto = getIdPilotoPorNombre(PilotsList, nombrePiloto);
 
 		LinkedList* listaVuelosNoLifeson;
 

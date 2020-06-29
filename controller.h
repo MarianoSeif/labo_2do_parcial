@@ -15,3 +15,4 @@ int controller_filtrarVuelosCortos(LinkedList* pListFlights);
 int controller_filtrarVuelosAPortugal(LinkedList* pListFlights, LinkedList* PilotsList);
 int controller_filtrarVuelosAlexLifeson(LinkedList* pListFlights, LinkedList* PilotsList);
 int controller_ordenar(LinkedList* pListFlights, LinkedList* PilotsList);
+int controller_Seif_filtrarVuelosPorNombre(LinkedList* pListFlights, LinkedList* PilotsList);
