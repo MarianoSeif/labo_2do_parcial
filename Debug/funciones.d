@@ -1,0 +1,1 @@
+funciones.o: ../funciones.c
