@@ -32,6 +32,7 @@ int vuelo_vuelosAPortugal(void* element);
 int vuelo_vuelosNoLifeson(void* element);
 int vuelo_vuelosPorDestinoYPasajeros(void* element1, void* element2);
 int vuelo_vuelosPorPiloto(void* element, int piloto);
+int vuelo_vuelosPorNombreDestino(void* element, char* destino);
 
 
 int vuelo_setIdVuelo(eVuelo* this, int idVuelo);

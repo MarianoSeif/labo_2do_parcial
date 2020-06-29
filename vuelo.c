@@ -183,6 +183,23 @@ int vuelo_vuelosPorPiloto(void* element, int piloto)
 	return retorno;
 }
 
+int vuelo_vuelosPorNombreDestino(void* element, char* destino)
+{
+	int retorno = 0;
+	int idPiloto;
+	eVuelo* pVuelo;
+	char dest[128];
+
+	if(element!=NULL){
+		pVuelo = (eVuelo*) element;
+		vuelo_getDestino(pVuelo, dest);
+		if(strcmp(dest, destino)==0){
+			retorno = 1;
+		}
+	}
+	return retorno;
+}
+
 
 int vuelo_vuelosPorDestinoYPasajeros(void* element1, void* element2)
 {

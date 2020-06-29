@@ -56,3 +56,4 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order);
 int ll_count(LinkedList* this, int (*fn)(void* element));
 LinkedList* ll_filter(LinkedList* this, int (*fn)(void* element));
 LinkedList* ll_filter2(LinkedList* this, int (*fn)(void* element, int idPiloto), int idPiloto);
+LinkedList* ll_filter3(LinkedList* this, int (*fn)(void* element, char* cadena), char* cadena);

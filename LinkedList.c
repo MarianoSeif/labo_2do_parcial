@@ -579,3 +579,24 @@ LinkedList* ll_filter2(LinkedList* this, int (*fn)(void* element, int idPiloto),
     }
     return retorno;
 }
+
+LinkedList* ll_filter3(LinkedList* this, int (*fn)(void* element, char* cadena), char* cadena)
+{
+    int i, len;
+    void* element;
+    LinkedList* retorno = NULL;
+    LinkedList* nuevaLista = ll_newLinkedList();
+
+
+    if(this!=NULL && fn!= NULL && this->size>0){
+    	len = ll_len(this);
+    	for(i=0;i<len;i++){
+    		element = ll_get(this,i);
+    		if(fn(element, cadena)){
+    			ll_add(nuevaLista, element);
+    		}
+    	}
+    	retorno = nuevaLista;
+    }
+    return retorno;
+}

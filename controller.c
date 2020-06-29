@@ -224,7 +224,28 @@ int controller_Seif_filtrarVuelosPorNombre(LinkedList* pListFlights, LinkedList*
 	return retorno;
 }
 
+int controller_Seif_filtrarVuelosPorDestino(LinkedList* pListFlights, LinkedList* PilotsList)
+{
+	int retorno = -1;
 
+	char destino[128];
+
+	if(pListFlights!=NULL){
+		getString("Ingrese destino", destino, 128);
+		//idPiloto = getIdPilotoPorNombre(PilotsList, nombrePiloto);
+
+		LinkedList* listaVuelosNoLifeson;
+
+		listaVuelosNoLifeson = ll_filter3(pListFlights, vuelo_vuelosPorNombreDestino, destino);
+
+		if(listaVuelosNoLifeson!=NULL){
+			//controller_saveAsText("VuelosAPortugal.csv", listaVuelosNoLifeson);
+			controller_ListFlights(listaVuelosNoLifeson, PilotsList);
+			retorno = 0;
+		}
+	}
+	return retorno;
+}
 
 int controller_ordenar(LinkedList* pListFlights, LinkedList* PilotsList)
 {

@@ -16,3 +16,4 @@ int controller_filtrarVuelosAPortugal(LinkedList* pListFlights, LinkedList* Pilo
 int controller_filtrarVuelosAlexLifeson(LinkedList* pListFlights, LinkedList* PilotsList);
 int controller_ordenar(LinkedList* pListFlights, LinkedList* PilotsList);
 int controller_Seif_filtrarVuelosPorNombre(LinkedList* pListFlights, LinkedList* PilotsList);
+int controller_Seif_filtrarVuelosPorDestino(LinkedList* pListFlights, LinkedList* PilotsList);

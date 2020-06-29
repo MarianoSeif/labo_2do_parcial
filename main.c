@@ -63,7 +63,8 @@ int main()
 
 				break;
 			case 8:
-				controller_Seif_filtrarVuelosPorNombre(FlightsList, PilotsList);
+				//controller_Seif_filtrarVuelosPorNombre(FlightsList, PilotsList);
+				controller_Seif_filtrarVuelosPorDestino(FlightsList, PilotsList);
 
 				break;
 
