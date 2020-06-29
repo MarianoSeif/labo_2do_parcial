@@ -9,6 +9,7 @@
 #include "vuelo.h"
 #include "piloto.h"
 #include "parser.h"
+#include "funciones.h"
 
 int controller_loadFlightFile(char* path, LinkedList* plistFlights)
 {

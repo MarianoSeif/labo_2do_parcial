@@ -1,5 +1,5 @@
 controller.o: ../controller.c ../LinkedList.h ../vuelo.h ../piloto.h \
- ../parser.h
+ ../parser.h ../funciones.h
 
 ../LinkedList.h:
 
@@ -8,3 +8,5 @@ controller.o: ../controller.c ../LinkedList.h ../vuelo.h ../piloto.h \
 ../piloto.h:
 
 ../parser.h:
+
+../funciones.h:

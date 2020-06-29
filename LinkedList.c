@@ -559,7 +559,7 @@ LinkedList* ll_filter(LinkedList* this, int (*fn)(void* element))
     return retorno;
 }
 
-LinkedList* ll_filter2(LinkedList* this, int (*fn)(void* element, char* nombrePiloto), int idPiloto)
+LinkedList* ll_filter2(LinkedList* this, int (*fn)(void* element, int idPiloto), int idPiloto)
 {
     int i, len;
     void* element;
