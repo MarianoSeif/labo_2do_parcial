@@ -169,8 +169,9 @@ int menuPrincipal(){
 		printf("\n5. Filtrar vuelos cortos");
 		printf("\n6. Listar vuelos a Portugal");
 		printf("\n7. Filtrar a Alex Lifeson");
-		printf("\n8. Filtrar por nombre");
-		printf("\n9. Salir");
+		printf("\n8. Filtrar por nombre de piloto");
+		printf("\n9. Filtrar por destino");
+		printf("\n10. Salir");
 
 		opcion = getInt("Ingrese opcion: ");
 

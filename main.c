@@ -55,23 +55,19 @@ int main()
 				break;
 			case 6:
 				controller_filtrarVuelosAPortugal(FlightsList, PilotsList);
-
 				break;
 			case 7:
-				//controller_ordenar(FlightsList, PilotsList);
-				//controller_ListPilots(PilotsList);
 				controller_filtrarVuelosAlexLifeson(FlightsList, PilotsList);
-
-
 				break;
 			case 8:
-				//controller_Seif_filtrarVuelosPorNombre(FlightsList, PilotsList);
+				controller_Seif_filtrarVuelosPorNombre(FlightsList, PilotsList);
+				break;
+			case 9:
 				controller_Seif_filtrarVuelosPorDestino(FlightsList, PilotsList);
-
 				break;
 
 		}
-	}while(opcion!=9);
+	}while(opcion!=10);
 
 	ll_deleteLinkedList(FlightsList);
 	ll_deleteLinkedList(PilotsList);
