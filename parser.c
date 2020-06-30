@@ -14,20 +14,21 @@ int parser_flightFromText(FILE* pFile , LinkedList* pList)
 	eVuelo* pVuelo;
 
 	retorno=-1;
+	if(pFile!=NULL && pList!=NULL){
+		//Leo el encabezado
 
-	//Leo el encabezado
+		fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", idVuelo, idAvion, idPiloto, fecha, destino, cantPasajeros, horaDespegue, horaLlegada);
 
-	fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", idVuelo, idAvion, idPiloto, fecha, destino, cantPasajeros, horaDespegue, horaLlegada);
-
-	while(!feof(pFile)){
-		if(feof(pFile)){
-			break;
-		}
-		datos = fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", idVuelo, idAvion, idPiloto, fecha, destino, cantPasajeros, horaDespegue, horaLlegada);
-		if(datos==8){
-			pVuelo = vuelo_newParametros(idVuelo, idAvion, idPiloto, fecha, destino, cantPasajeros, horaDespegue, horaLlegada);
-			ll_add(pList, pVuelo);
-			retorno=1;
+		while(!feof(pFile)){
+			if(feof(pFile)){
+				break;
+			}
+			datos = fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", idVuelo, idAvion, idPiloto, fecha, destino, cantPasajeros, horaDespegue, horaLlegada);
+			if(datos==8){
+				pVuelo = vuelo_newParametros(idVuelo, idAvion, idPiloto, fecha, destino, cantPasajeros, horaDespegue, horaLlegada);
+				ll_add(pList, pVuelo);
+				retorno=1;
+			}
 		}
 	}
 
@@ -43,19 +44,20 @@ int parser_pilotosFromText(FILE* pFile , LinkedList* pList)
 
 	retorno=-1;
 
-	//Leo el encabezado
+	if(pFile!=NULL && pList!=NULL){
+		//Leo el encabezado
+		//fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", idVuelo, idAvion, idPiloto, fecha, destino, cantPasajeros, horaDespegue, horaLlegada);
 
-	//fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", idVuelo, idAvion, idPiloto, fecha, destino, cantPasajeros, horaDespegue, horaLlegada);
-
-	while(!feof(pFile)){
-		if(feof(pFile)){
-			break;
-		}
-		datos = fscanf(pFile, "%[^,],%[^\n]\n", id, nombre);
-		if(datos==2){
-			pPiloto = piloto_newParametros(id, nombre);
-			ll_add(pList, pPiloto);
-			retorno=1;
+		while(!feof(pFile)){
+			if(feof(pFile)){
+				break;
+			}
+			datos = fscanf(pFile, "%[^,],%[^\n]\n", id, nombre);
+			if(datos==2){
+				pPiloto = piloto_newParametros(id, nombre);
+				ll_add(pList, pPiloto);
+				retorno=1;
+			}
 		}
 	}
 

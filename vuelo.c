@@ -5,35 +5,6 @@
  *      Author: mfs
  */
 
-/*	FUNCION PARA FILTER DEVULVE 0 O 1
-int e_n(void* element)
-{
-	int retorno = 0;
-	e* elemento;
-	if(element!=NULL){
-		elemento = (e*) element;
-		if((elemento->a - elemento->b)<3){
-			retorno = 1;
-		}
-	}
-	return retorno;
-}
-
-
-//FUNCION PARA COUNT
-int e_n(void* element)
-{
-	int retorno = -1;
-	if(element!=NULL){
-		retorno = ((e*) element)->cantPasajeros;
-	}
-	return retorno;
-}
-
-*/
-
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -123,10 +94,14 @@ int vuelo_cantidadDePasajerosIrlanda(void* element)
 int vuelo_vuelosCortos(void* element)
 {
 	int retorno = 0;
+	int horaLlegada, horaDespegue;
 	eVuelo* elemento;
 	if(element!=NULL){
 		elemento = (eVuelo*) element;
-		if((elemento->horaLlegada - elemento->horaDespegue)<3){
+		vuelo_getHoraLlegada(elemento, &horaLlegada);
+		vuelo_getHoraDespegue(elemento, &horaDespegue);
+
+		if((horaLlegada - horaDespegue)<3){
 			retorno = 1;
 		}
 	}
@@ -136,9 +111,14 @@ int vuelo_vuelosCortos(void* element)
 int vuelo_vuelosAPortugal(void* element)
 {
 	int retorno = 0;
+	eVuelo* pVuelo;
+	char destino[128];
 
 	if(element!=NULL){
-		if(strcmp(((eVuelo*) element)->destino, "Portugal")==0){
+		pVuelo = (eVuelo*) element;
+		vuelo_getDestino(pVuelo, destino);
+
+		if(strcmp(destino, "Portugal")==0){
 			retorno = 1;
 		}
 	}
@@ -148,9 +128,13 @@ int vuelo_vuelosAPortugal(void* element)
 int vuelo_vuelosNoLifeson(void* element)
 {
 	int retorno = 0;
+	eVuelo* pVuelo;
+	int idPiloto;
 
 	if(element!=NULL){
-		if((((eVuelo*) element)->idPiloto)!=1){
+		pVuelo = (eVuelo*) element;
+		vuelo_getIdPiloto(pVuelo,&idPiloto);
+		if((idPiloto)!=1){
 			retorno = 1;
 		}
 	}
@@ -177,7 +161,7 @@ int vuelo_vuelosPorPiloto(void* element, int piloto)
 int vuelo_vuelosPorNombreDestino(void* element, char* destino)
 {
 	int retorno = 0;
-	int idPiloto;
+
 	eVuelo* pVuelo;
 	char dest[128];
 

@@ -56,6 +56,7 @@ int controller_ListFlights(LinkedList* pListFlights, LinkedList* pListPilotos)
     retorno = -1;
     eVuelo* pVuelo;
     ePiloto* pPiloto;
+    char nombrePiloto[128];
 
     if(pListFlights!=NULL){
 		if(ll_isEmpty(pListFlights)){
@@ -67,9 +68,9 @@ int controller_ListFlights(LinkedList* pListFlights, LinkedList* pListPilotos)
 
 			for(i=0;i<len;i++){
 				pVuelo = (eVuelo*) ll_get(pListFlights, i);
-				//printf("\nINDEX: %d", piloto_findPilotoById(pListPilotos, pVuelo->idPiloto));
 				pPiloto = (ePiloto*) ll_get(pListPilotos, piloto_findPilotoById(pListPilotos, pVuelo->idPiloto));
-				vuelo_listOne(pVuelo, 0, pPiloto->nombre);
+				piloto_getNombre(pPiloto, nombrePiloto);
+				vuelo_listOne(pVuelo, 0, nombrePiloto);
 			}
 		}
 		retorno = 0;
@@ -84,7 +85,6 @@ int controller_ListPilots(LinkedList* pListPilotos)
     retorno = -1;
 
     ePiloto* pPiloto;
-    //Employee* pAuxEmployee = (Employee*) malloc(sizeof(Employee));
 
     if(pListPilotos!=NULL){
 		if(ll_isEmpty(pListPilotos)){
@@ -144,7 +144,8 @@ int controller_saveAsText(char* path , LinkedList* pListFlights)
 {
 	int retorno = -1;
 	FILE* pFile;
-	int i, len;
+	int i, len, idVuelo, idAvion, idPiloto,cantPasajeros,horaDespegue,horaLlegada;
+	char fecha[11], destino[128];
 	eVuelo* pVuelo;
 
 	if(pListFlights!=NULL){
@@ -156,14 +157,17 @@ int controller_saveAsText(char* path , LinkedList* pListFlights)
 			for(i=0;i<len;i++){
 				pVuelo = (eVuelo*) ll_get(pListFlights, i);
 
-				/*
-				employee_getId(pEmployee, &id);
-				employee_getNombre(pEmployee, nombre);
-				employee_getHorasTrabajadas(pEmployee, &horasTrabajadas);
-				employee_getSueldo(pEmployee, &sueldo);
-				*/
+				vuelo_getIdVuelo(pVuelo, &idVuelo);
+				vuelo_getIdAvion(pVuelo, &idAvion);
+				vuelo_getIdPiloto(pVuelo, &idPiloto);
+				vuelo_getFecha(pVuelo, fecha);
+				vuelo_getDestino(pVuelo, destino);
+				vuelo_getCantPasajeros(pVuelo, &cantPasajeros);
+				vuelo_getHoraDespegue(pVuelo, &horaDespegue);
+				vuelo_getHoraLlegada(pVuelo, &horaLlegada);
 
-				fprintf(pFile, "%d,%d,%d,%s,%s,%d,%d,%d\n", pVuelo->idVuelo, pVuelo->idAvion, pVuelo->idPiloto, pVuelo->fecha, pVuelo->destino, pVuelo->cantPasajeros, pVuelo->horaDespegue, pVuelo->horaLlegada);
+				//fprintf(pFile, "%d,%d,%d,%s,%s,%d,%d,%d\n", pVuelo->idVuelo, pVuelo->idAvion, pVuelo->idPiloto, pVuelo->fecha, pVuelo->destino, pVuelo->cantPasajeros, pVuelo->horaDespegue, pVuelo->horaLlegada);
+				fprintf(pFile, "%d,%d,%d,%s,%s,%d,%d,%d\n", idVuelo, idAvion, idPiloto, fecha, destino, cantPasajeros, horaDespegue, horaLlegada);
 			}
 			fclose(pFile);
 		}
@@ -210,16 +214,12 @@ int controller_filtrarVuelosAlexLifeson(LinkedList* pListFlights, LinkedList* Pi
 		listaVuelosNoLifeson = ll_filter(pListFlights, vuelo_vuelosNoLifeson);
 
 		if(listaVuelosNoLifeson!=NULL){
-			//controller_saveAsText("VuelosAPortugal.csv", listaVuelosNoLifeson);
 			controller_ListFlights(listaVuelosNoLifeson, PilotsList);
 			retorno = 0;
 		}
 	}
 	return retorno;
 }
-
-
-
 
 int controller_Seif_filtrarVuelosPorNombre(LinkedList* pListFlights, LinkedList* PilotsList)
 {
@@ -236,7 +236,7 @@ int controller_Seif_filtrarVuelosPorNombre(LinkedList* pListFlights, LinkedList*
 		listaVuelosNoLifeson = ll_filter2(pListFlights, vuelo_vuelosPorPiloto, idPiloto);
 
 		if(listaVuelosNoLifeson!=NULL){
-			//controller_saveAsText("VuelosAPortugal.csv", listaVuelosNoLifeson);
+
 			controller_ListFlights(listaVuelosNoLifeson, PilotsList);
 			retorno = 0;
 		}
@@ -252,14 +252,13 @@ int controller_Seif_filtrarVuelosPorDestino(LinkedList* pListFlights, LinkedList
 
 	if(pListFlights!=NULL){
 		getString("Ingrese destino", destino, 128);
-		//idPiloto = getIdPilotoPorNombre(PilotsList, nombrePiloto);
 
 		LinkedList* listaVuelosNoLifeson;
 
 		listaVuelosNoLifeson = ll_filter3(pListFlights, vuelo_vuelosPorNombreDestino, destino);
 
 		if(listaVuelosNoLifeson!=NULL){
-			//controller_saveAsText("VuelosAPortugal.csv", listaVuelosNoLifeson);
+
 			controller_ListFlights(listaVuelosNoLifeson, PilotsList);
 			retorno = 0;
 		}
